@@ -1,13 +1,19 @@
 import os
 from pathlib import Path
 import sys
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env file if present
+load_dotenv(BASE_DIR / '.env')
+
 
 # Add apps directory to python path
 sys.path.insert(0, str(BASE_DIR))
 
-SECRET_KEY = 'django-insecure-7j^gj5m9+pw-9r_=gbcd(_*71=^+)1c7y$ah_zb1glgf87n8e9'
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-7j^gj5m9+pw-9r_=gbcd(_*71=^+)1c7y$ah_zb1glgf87n8e9')
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -67,10 +73,15 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
+        'NAME': os.getenv('DB_NAME', 'use_case_hub'),
+        'USER': os.getenv('DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = []
 
