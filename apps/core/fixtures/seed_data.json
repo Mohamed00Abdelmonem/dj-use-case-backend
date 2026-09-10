@@ -1,0 +1,1769 @@
+{
+  "meta": {
+    "app": "Use Case Hub",
+    "version": "2.5",
+    "source": "SELECT_All_Network_Use_Cases_Catalogue(2).xlsx",
+    "updatedAt": "2026-09-10T10:01:37.769Z"
+  },
+  "settings": {
+    "useCaseStatuses": [
+      "Not Assessed",
+      "In Assessment",
+      "Gaps Identified",
+      "Ready",
+      "Implemented"
+    ],
+    "gapStatuses": [
+      "Open",
+      "In Analysis",
+      "Planned",
+      "In Progress",
+      "Blocked",
+      "Closed"
+    ],
+    "priorities": [
+      "Low",
+      "Medium",
+      "High",
+      "Critical"
+    ],
+    "integrationStatuses": [
+      "Not Started",
+      "Planned",
+      "In Progress",
+      "Available",
+      "Blocked"
+    ],
+    "people": [],
+    "catalogueWidth": 414,
+    "pipelineStatuses": [
+      "Planned",
+      "In Development",
+      "Active",
+      "Paused",
+      "Failed",
+      "Retired"
+    ],
+    "pipelineEnvironments": [
+      "Development",
+      "Test",
+      "UAT",
+      "Production"
+    ],
+    "narStatuses": [
+      "Draft",
+      "Submitted",
+      "Approved",
+      "Rejected",
+      "Revoked"
+    ],
+    "narRenewalWarningDays": 30
+  },
+  "domains": [
+    {
+      "id": "dom-6b43ec27-2a00-4757-8976-58b4f8402d17",
+      "name": "Generic",
+      "description": "",
+      "categories": [
+        {
+          "id": "cat-f5d69ee1-13b9-4c57-9e8b-7f1952c7306b",
+          "name": "Tools",
+          "description": "",
+          "useCases": [],
+          "order": 1
+        },
+        {
+          "id": "cat-228f26e1-de4f-4a91-b005-2dd3a734ad0f",
+          "name": "Infrastructure",
+          "description": "",
+          "useCases": [],
+          "order": 2
+        }
+      ],
+      "order": 1
+    },
+    {
+      "id": "dom-8696c267-652e-4f50-a0c7-500d1414b3bd",
+      "name": "UNOC",
+      "description": "",
+      "categories": [
+        {
+          "id": "dom-fault-ticket-incident-intelligence-fault-demarcation-correlation",
+          "name": "Demarcation & Correlation",
+          "useCases": [
+            {
+              "id": "uc-01",
+              "reference": "UC-01",
+              "name": "Fault Demarcation",
+              "description": "Determines the most likely responsible domain or team for a fault using topology, diagnostics, alarms and service context.",
+              "businessValue": "Reduces incorrect referrals and accelerates restoration.",
+              "outputs": "Fault domain, responsible team, supporting evidence and next investigation steps.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [
+                "dev-a8108ccc-555e-4357-bb9d-934c7e65b826"
+              ],
+              "gapIds": []
+            },
+            {
+              "id": "uc-03",
+              "reference": "UC-03",
+              "name": "Fault Mapper & Network Correlation",
+              "description": "Correlates alarms, faults, events, topology, tickets and locations into one related incident picture.",
+              "businessValue": "Helps teams work the real incident instead of chasing many separate symptoms.",
+              "outputs": "Correlated event group, probable common cause, affected resources and impact summary.",
+              "status": "Implemented",
+              "notes": "",
+              "updatedAt": "2026-09-09T13:03:06.407Z",
+              "integrationIds": [],
+              "developerIds": [
+                "dev-a8108ccc-555e-4357-bb9d-934c7e65b826",
+                "dev-f25538fc-0ff1-421f-ac3b-4b9057e41655"
+              ],
+              "gapIds": []
+            },
+            {
+              "id": "uc-14",
+              "reference": "UC-14",
+              "name": "Incident & Ticket Correlation",
+              "description": "Links incidents, tickets, alarms and affected resources to identify parent/child relationships and duplicate tickets.",
+              "businessValue": "Improves incident control and avoids duplicated impact calculations.",
+              "outputs": "Incident cluster, parent ticket, child tickets, affected scope and status alignment.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 1
+        },
+        {
+          "id": "dom-fault-ticket-incident-intelligence-anomaly-recurrence",
+          "name": "Anomaly & Recurrence",
+          "useCases": [
+            {
+              "id": "uc-05",
+              "reference": "UC-05",
+              "name": "Fault Load & Repeat Anomaly Detection",
+              "description": "Detects abnormal increases in faults or repeated faults compared with historical baselines.",
+              "businessValue": "Allows proactive investigation before the problem becomes a wider service issue.",
+              "outputs": "Anomaly score, affected domain, trend chart, repeated elements and suspected drivers.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-50-2",
+              "reference": "UC-50",
+              "name": "Automated Network Baseline Management",
+              "description": "Builds a normal operating baseline for resources, services and KPIs from historical data and validated snapshots.",
+              "businessValue": "Makes it easier to distinguish normal variation from real degradation or abnormal change.",
+              "outputs": "Baseline values, thresholds, deviation score, trend profile and exceptions.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-08T12:59:04.804Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 2
+        },
+        {
+          "id": "dom-fault-ticket-incident-intelligence-ticket-assurance",
+          "name": "Ticket Assurance",
+          "useCases": [
+            {
+              "id": "uc-12",
+              "reference": "UC-12",
+              "name": "Referral & Closure Management",
+              "description": "Audits ticket referrals and closures against technical evidence and lifecycle rules.",
+              "businessValue": "Finds incorrect handovers, premature closures and process gaps that increase resolution time.",
+              "outputs": "Referral quality, closure validity, bounced tickets, exceptions and improvement actions.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-13",
+              "reference": "UC-13",
+              "name": "Alarm-to-Ticket Assurance",
+              "description": "Checks whether actionable alarms have the required trouble tickets and correct references.",
+              "businessValue": "Prevents untracked operational issues and improves accountability.",
+              "outputs": "Missing-ticket list, alarm mapping, recommended ticket creation and reconciliation status.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-15",
+              "reference": "UC-15",
+              "name": "Post-Closure Failure Detection",
+              "description": "Audits ticket referrals and closures against technical evidence and lifecycle rules.",
+              "businessValue": "Finds incorrect handovers, premature closures and process gaps that increase resolution time.",
+              "outputs": "Referral quality, closure validity, bounced tickets, exceptions and improvement actions.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 3
+        },
+        {
+          "id": "dom-network-service-health-monitoring-detection",
+          "name": "Monitoring & Detection",
+          "useCases": [
+            {
+              "id": "uc-02",
+              "reference": "UC-02",
+              "name": "Logical Event Monitoring & Detection",
+              "description": "Provides a structured capability under the Network & Service Health domain to transform network data into actionable operational intelligence.",
+              "businessValue": "Supports faster decisions, better governance and clearer operational ownership.",
+              "outputs": "Status, analysis summary, related assets/services, KPIs, exceptions and recommended actions.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 4
+        },
+        {
+          "id": "dom-network-service-health-health-checks",
+          "name": "Health Checks",
+          "useCases": [
+            {
+              "id": "uc-08",
+              "reference": "UC-08",
+              "name": "On-Demand Health Check",
+              "description": "Runs structured checks on devices, links, circuits or services using CLI, SNMP, APIs and related operational data.",
+              "businessValue": "Gives teams a fast, consistent understanding of current health and degradation drivers.",
+              "outputs": "Health score, KPI status, failed checks, analysis summary and recommended actions.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-09",
+              "reference": "UC-09",
+              "name": "Daily Automated Health Check",
+              "description": "Runs structured checks on devices, links, circuits or services using CLI, SNMP, APIs and related operational data.",
+              "businessValue": "Gives teams a fast, consistent understanding of current health and degradation drivers.",
+              "outputs": "Health score, KPI status, failed checks, analysis summary and recommended actions.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-10",
+              "reference": "UC-10",
+              "name": "Health Check Population Management",
+              "description": "Maintains the list of circuits/services/devices included in health checks by detecting additions, removals and modifications.",
+              "businessValue": "Prevents monitoring coverage gaps and reduces manual maintenance.",
+              "outputs": "Updated health-check scope, added/removed objects, source evidence and sync status.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-11",
+              "reference": "UC-11",
+              "name": "Health Check vs. Inventory Discrepancies",
+              "description": "Runs structured checks on devices, links, circuits or services using CLI, SNMP, APIs and related operational data.",
+              "businessValue": "Gives teams a fast, consistent understanding of current health and degradation drivers.",
+              "outputs": "Health score, KPI status, failed checks, analysis summary and recommended actions.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 5
+        },
+        {
+          "id": "dom-change-configuration-assurance-general",
+          "name": "MDT Management",
+          "useCases": [
+            {
+              "id": "uc-04",
+              "reference": "UC-103",
+              "name": "MDT Monitoring & Change Assurance",
+              "description": "Analyzes planned activities before, during and after execution using health, topology, alarms, customers and services.",
+              "businessValue": "Reduces change risk and gives operations a clear view of expected and actual impact.",
+              "outputs": "Pre-impact list, affected services/customers, execution health, post-check result and closure recommendation.",
+              "status": "Implemented",
+              "notes": "",
+              "updatedAt": "2026-09-09T12:20:05.680Z",
+              "integrationIds": [
+                "int-8feed855-cb30-4fa7-915e-3b728227a20b"
+              ],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-4ffca412-84e3-4225-abaa-3e20425f9fe8",
+              "reference": "UC-101",
+              "name": "MDT Impacted Customers Analysis",
+              "description": "",
+              "businessValue": "",
+              "outputs": "",
+              "status": "Implemented",
+              "integrationIds": [
+                "int-8feed855-cb30-4fa7-915e-3b728227a20b",
+                "int-938f1b9a-5ded-41c2-8b23-b3c68351ca6e",
+                "int-9d17fb90-29ac-4c5f-9b84-62d61f6386a0",
+                "int-7245a4fa-87ad-4ffc-9201-a324c4efc700"
+              ],
+              "developerIds": [
+                "dev-a8108ccc-555e-4357-bb9d-934c7e65b826",
+                "dev-521eafb2-53d1-4456-8603-cc52a20e59a7"
+              ],
+              "notes": "",
+              "updatedAt": "2026-09-09T12:08:43.657Z",
+              "gapIds": [
+                "gap-9d45dee9-648c-4516-bb1f-589ec093c913"
+              ]
+            },
+            {
+              "id": "uc-fa2db46f-438a-44d1-b6b4-296da035b2b9",
+              "reference": "UC-102",
+              "name": "MDT Impacted Customers Monitoring Dashboard",
+              "description": "",
+              "businessValue": "",
+              "outputs": "",
+              "status": "Implemented",
+              "integrationIds": [
+                "int-8feed855-cb30-4fa7-915e-3b728227a20b",
+                "int-80506f3e-d3ca-4e1e-897f-ad22f8b22849",
+                "int-14b3350d-20e0-4012-a17d-6d7385286078",
+                "int-5d4f267a-3f5c-40b5-83d3-ca249d96e4aa",
+                "int-ef333363-0cec-470b-89f1-90460a26cb35",
+                "int-9af74b0d-1e20-4ac5-8492-1c19b0463adc"
+              ],
+              "developerIds": [
+                "dev-a8108ccc-555e-4357-bb9d-934c7e65b826",
+                "dev-f25538fc-0ff1-421f-ac3b-4b9057e41655"
+              ],
+              "notes": "",
+              "updatedAt": "2026-09-09T12:10:57.580Z",
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 6
+        },
+        {
+          "id": "dom-impact-intelligence-impact-analysis",
+          "name": "Impact Analysis",
+          "useCases": [
+            {
+              "id": "uc-16",
+              "reference": "UC-16",
+              "name": "Service Impact Analysis (SIA)",
+              "description": "Traverses topology and service relationships to identify which services are technically affected by a failure or activity.",
+              "businessValue": "Provides the technical impact scope required for incident decisions and communication.",
+              "outputs": "Affected services, circuits, resources, direct/downstream impact and dependency path.",
+              "status": "Implemented",
+              "notes": "",
+              "updatedAt": "2026-09-09T12:40:29.621Z",
+              "integrationIds": [
+                "int-8feed855-cb30-4fa7-915e-3b728227a20b",
+                "int-938f1b9a-5ded-41c2-8b23-b3c68351ca6e",
+                "int-9d17fb90-29ac-4c5f-9b84-62d61f6386a0",
+                "int-ce4f24be-5ba3-4c1d-8fc5-7f49bf60eb99",
+                "int-7245a4fa-87ad-4ffc-9201-a324c4efc700",
+                "int-80506f3e-d3ca-4e1e-897f-ad22f8b22849",
+                "int-5d4f267a-3f5c-40b5-83d3-ca249d96e4aa",
+                "int-ef333363-0cec-470b-89f1-90460a26cb35",
+                "int-9af74b0d-1e20-4ac5-8492-1c19b0463adc",
+                "int-0412b427-e2f6-4714-8db2-0bc5fbe933ac"
+              ],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-17",
+              "reference": "UC-17",
+              "name": "Business Impact Analysis",
+              "description": "Converts technical impact into business impact by adding customer class, service criticality and priority context.",
+              "businessValue": "Helps management prioritize response according to business exposure, not only alarm severity.",
+              "outputs": "Customer/business impact, VIP exposure, severity classification and escalation recommendation.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-21",
+              "reference": "UC-21",
+              "name": "What-If Impact Simulation",
+              "description": "Simulates failure, removal, migration or traffic growth and calculates expected impact before it happens.",
+              "businessValue": "Supports safer planning and more informed change or expansion decisions.",
+              "outputs": "Simulated impact, affected services/customers, capacity after event and risk notes.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-9e007fb1-cf45-44e0-a2bb-e16b3f83fcbf",
+              "reference": "UC-105",
+              "name": "Closed RTTS Ticket related to Half Pon",
+              "description": "",
+              "businessValue": "",
+              "outputs": "",
+              "status": "Implemented",
+              "integrationIds": [
+                "int-0412b427-e2f6-4714-8db2-0bc5fbe933ac",
+                "int-80506f3e-d3ca-4e1e-897f-ad22f8b22849",
+                "int-ef333363-0cec-470b-89f1-90460a26cb35",
+                "int-14b3350d-20e0-4012-a17d-6d7385286078"
+              ],
+              "developerIds": [
+                "dev-a8108ccc-555e-4357-bb9d-934c7e65b826"
+              ],
+              "notes": "",
+              "updatedAt": "2026-09-09T12:54:50.973Z",
+              "gapIds": [
+                "gap-11916a2b-02c8-4911-a793-0aab889cfadb"
+              ]
+            }
+          ],
+          "description": "",
+          "order": 7
+        },
+        {
+          "id": "dom-customer-intelligence-customer-view-health",
+          "name": "Customer View & Health",
+          "useCases": [
+            {
+              "id": "uc-22",
+              "reference": "UC-22",
+              "name": "Customer 360 View",
+              "description": "Combines customer services, circuits, tickets, alarms, performance, complaints, health and activities in one view.",
+              "businessValue": "Helps customer-facing and operations teams understand the full customer situation quickly.",
+              "outputs": "Customer profile, service list, health status, incidents, complaints, MDT/MSO relation and timeline.",
+              "status": "Implemented",
+              "notes": "",
+              "updatedAt": "2026-09-09T12:28:57.872Z",
+              "integrationIds": [
+                "int-8feed855-cb30-4fa7-915e-3b728227a20b",
+                "int-938f1b9a-5ded-41c2-8b23-b3c68351ca6e",
+                "int-7245a4fa-87ad-4ffc-9201-a324c4efc700",
+                "int-80506f3e-d3ca-4e1e-897f-ad22f8b22849",
+                "int-9d17fb90-29ac-4c5f-9b84-62d61f6386a0",
+                "int-14b3350d-20e0-4012-a17d-6d7385286078",
+                "int-5d4f267a-3f5c-40b5-83d3-ca249d96e4aa",
+                "int-ef333363-0cec-470b-89f1-90460a26cb35",
+                "int-9af74b0d-1e20-4ac5-8492-1c19b0463adc",
+                "int-0412b427-e2f6-4714-8db2-0bc5fbe933ac"
+              ],
+              "developerIds": [
+                "dev-a8108ccc-555e-4357-bb9d-934c7e65b826"
+              ],
+              "gapIds": [
+                "gap-d5581193-a5f8-4b8e-97ae-5cf3ce4d7934",
+                "gap-3eaefc38-9111-40e7-a307-272eeadb18e8"
+              ]
+            },
+            {
+              "id": "uc-23",
+              "reference": "UC-23",
+              "name": "Customer Experience Health Scoring",
+              "description": "Calculates customer health or experience score from technical indicators and service behavior.",
+              "businessValue": "Identifies customers at risk before they formally complain or escalate.",
+              "outputs": "Experience score, degradation drivers, affected services and proactive action candidates.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 8
+        },
+        {
+          "id": "dom-customer-intelligence-complaint-intelligence",
+          "name": "Complaint Intelligence",
+          "useCases": [
+            {
+              "id": "uc-24",
+              "reference": "UC-24",
+              "name": "Complaint Analysis & Prediction",
+              "description": "Analyzes historical complaints and current network/ticket conditions to predict complaint escalation risk.",
+              "businessValue": "Allows proactive intervention for customers or tickets most likely to become complaints.",
+              "outputs": "Complaint risk score, contributing factors, candidate tickets/customers and recommended action.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 9
+        },
+        {
+          "id": "dom-core-inventory-topology-inventory-views",
+          "name": "Inventory Views",
+          "useCases": [
+            {
+              "id": "uc-28",
+              "reference": "UC-28",
+              "name": "Unified Network Inventory",
+              "description": "Creates a trusted inventory model for active and passive network resources, covering assets, hierarchy, locations, ports, interfaces, links, circuits and services.",
+              "businessValue": "Gives operations and business teams one reliable source for network understanding instead of fragmented views across multiple tools.",
+              "outputs": "Asset catalogue, hierarchy, relationships, source lineage, discrepancy flags and searchable asset views.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-29",
+              "reference": "UC-29",
+              "name": "Network Element / Asset 360",
+              "description": "Provides a complete 360° page for each network element or asset, combining inventory, topology, health, alarms, tickets, services, customers and impact.",
+              "businessValue": "Cuts investigation time by allowing the user to understand the asset without jumping between systems.",
+              "outputs": "Asset profile, connected resources, service/customer impact, current status, tickets, alarms and history.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 10
+        },
+        {
+          "id": "dom-predictive-ai-operations-predictive-analytics",
+          "name": "Predictive Analytics",
+          "useCases": [
+            {
+              "id": "uc-07",
+              "reference": "UC-07",
+              "name": "Operational Load Forecasting",
+              "description": "Uses historical utilization to forecast when resources will reach defined thresholds.",
+              "businessValue": "Provides early planning signals before capacity becomes urgent.",
+              "outputs": "Forecast date, trend line, confidence, threshold crossing and recommended timing.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-26",
+              "reference": "UC-26",
+              "name": "Network Element Failure Risk Prediction",
+              "description": "Provides a complete 360° page for each network element or asset, combining inventory, topology, health, alarms, tickets, services, customers and impact.",
+              "businessValue": "Cuts investigation time by allowing the user to understand the asset without jumping between systems.",
+              "outputs": "Asset profile, connected resources, service/customer impact, current status, tickets, alarms and history.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 11
+        },
+        {
+          "id": "dom-predictive-ai-operations-service-scoring",
+          "name": "Service Scoring",
+          "useCases": [
+            {
+              "id": "uc-25",
+              "reference": "UC-25",
+              "name": "Service Maturity Index",
+              "description": "Scores service maturity using stability, incidents, performance, redundancy, capacity, complaints and change history.",
+              "businessValue": "Creates a management-level index that summarizes service reliability and risk.",
+              "outputs": "Maturity score, rating, drivers, weak areas and improvement priorities.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 12
+        },
+        {
+          "id": "dom-predictive-ai-operations-ai-assisted-operations",
+          "name": "AI-Assisted Operations",
+          "useCases": [
+            {
+              "id": "uc-27",
+              "reference": "UC-27",
+              "name": "Automated Root Cause Analysis",
+              "description": "Combines alarms, topology, health, changes, tickets and performance to suggest the most probable root cause.",
+              "businessValue": "Shortens analysis time during complex incidents.",
+              "outputs": "Probable root cause, evidence, related symptoms, confidence and next steps.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-97",
+              "reference": "UC-97",
+              "name": "AI Operations Assistant",
+              "description": "Allows users to ask operational questions and receive grounded answers from portfolio data.",
+              "businessValue": "Makes complex intelligence easier to consume for operations and management.",
+              "outputs": "Conversational answers, cited data objects, recommended actions and follow-up exploration.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-98",
+              "reference": "UC-98",
+              "name": "Closed-Loop Network Assurance",
+              "description": "Detects issues, analyzes cause and impact, recommends or triggers approved remediation, then verifies recovery.",
+              "businessValue": "Moves operations from reactive monitoring toward controlled automation.",
+              "outputs": "Detected issue, recommended action, execution status, recovery validation and audit trail.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 13
+        },
+        {
+          "id": "dom-impact-intelligence-outage-resiliency",
+          "name": "Outage & Resiliency",
+          "useCases": [
+            {
+              "id": "uc-18",
+              "reference": "UC-18",
+              "name": "Major Outage Detection & Analysis",
+              "description": "Analyzes a major outage by combining physical fault, topology, alarms, services, tickets, customers and restoration status.",
+              "businessValue": "Gives the war room one controlled understanding of the outage and its impact.",
+              "outputs": "Root-cause candidates, affected topology, SIA/BIA, customer list, tickets and recovery progress.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-20",
+              "reference": "UC-20",
+              "name": "SPOF & Resiliency Analysis",
+              "description": "Identifies single points of failure and insufficient redundancy across network resources and service paths.",
+              "businessValue": "Shows where one failure can create a large operational or business impact.",
+              "outputs": "Simulated impact, affected services/customers, capacity after event and risk notes.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 14
+        }
+      ],
+      "order": 2
+    },
+    {
+      "id": "dom-51e9ec43-a147-4db8-96f5-37065238c3d7",
+      "name": "IPNOC",
+      "description": "",
+      "categories": [
+        {
+          "id": "dom-install-base-assurance-gap-delta-control",
+          "name": "AssetForge (Install Base)",
+          "useCases": [
+            {
+              "id": "uc-43",
+              "reference": "UC-43",
+              "name": "Daily Install Base Delta Detection",
+              "description": "Compares the latest baseline with previous snapshots to identify added, removed, replaced or modified assets.",
+              "businessValue": "Highlights changes quickly and helps teams detect uncontrolled or undocumented network changes.",
+              "outputs": "Daily delta list, change category, affected assets, source evidence and action status.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-44",
+              "reference": "UC-44",
+              "name": "Inventory Gap & Discrepancy Management",
+              "description": "Classifies missing, conflicting, duplicated or stale records and manages them as actionable exceptions.",
+              "businessValue": "Improves inventory quality through a measurable correction process rather than static reports.",
+              "outputs": "Gap report, discrepancy category, responsible owner, severity and closure status.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-42",
+              "reference": "UC-42",
+              "name": "Install Base Validation",
+              "description": "Validates installed physical assets against approved inventory and management sources.",
+              "businessValue": "Identifies whether the network physically installed in the field matches what the organization believes it owns and operates.",
+              "outputs": "Validation report, missing assets, unexpected assets, model/serial mismatches and evidence.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-09T07:12:48.694Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-46",
+              "reference": "UC-46",
+              "name": "Inventory Data Quality Scoring",
+              "description": "Scores completeness, consistency, accuracy and freshness of inventory data by technology, region and source.",
+              "businessValue": "Allows management to track inventory quality as a KPI and target the weakest domains first.",
+              "outputs": "Quality score, completeness percentage, stale records, mismatch trends and source ranking.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-09T07:12:54.932Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-45",
+              "reference": "UC-45",
+              "name": "Unauthorized / Unregistered Asset Detection",
+              "description": "Detects assets found in the live network but not registered in the approved inventory baseline.",
+              "businessValue": "Supports governance, security and asset control by highlighting unmanaged infrastructure.",
+              "outputs": "Unregistered asset list, evidence, location, discovered attributes and investigation status.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-09T07:13:05.897Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-38",
+              "reference": "UC-38",
+              "name": "Golden Record Management",
+              "description": "Applies configurable source-priority and business rules to select the trusted value for each asset and attribute.",
+              "businessValue": "Creates a controlled, explainable inventory baseline that other use cases can depend on.",
+              "outputs": "Golden attributes, source lineage, confidence level, rule results and exception list.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-09T07:13:13.265Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 1
+        },
+        {
+          "id": "dom-change-configuration-assurance-change-validation",
+          "name": "ChangeGuard (Change Management)",
+          "useCases": [
+            {
+              "id": "uc-47",
+              "reference": "UC-47",
+              "name": "Pre-Change Health Check",
+              "description": "Runs health and configuration checks before a change to establish the baseline and detect unsafe conditions.",
+              "businessValue": "Prevents execution when the network is already unhealthy or missing prerequisites.",
+              "outputs": "PRE baseline, failed checks, device readiness, warning list and go/no-go evidence.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-48",
+              "reference": "UC-48",
+              "name": "Post-Change Health Check",
+              "description": "Repeats checks after a change and compares the results with the pre-change baseline.",
+              "businessValue": "Confirms whether the activity achieved the expected outcome without introducing new issues.",
+              "outputs": "POST result, delta analysis, new failures, recovered issues and validation status.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-52",
+              "reference": "UC-52",
+              "name": "Automated Change Success Validation",
+              "description": "Combines health, alarms, KPIs, configuration deltas and policy results to decide whether a change is successful.",
+              "businessValue": "Creates a consistent technical acceptance method for network changes.",
+              "outputs": "Success score, failed validation items, risk notes and closure recommendation.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-53",
+              "reference": "UC-53",
+              "name": "Change Risk Assessment",
+              "description": "Calculates pre-change risk using impacted resources, redundancy, health, service/customer exposure and historical outcomes.",
+              "businessValue": "Helps prioritize supervision, approval depth and rollback planning for risky activities.",
+              "outputs": "Risk score, risk drivers, impacted services/customers and recommended controls.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-49",
+              "reference": "UC-49",
+              "name": "PRE/POST Configuration & State Comparison",
+              "description": "Compares selected configuration, command outputs and operational states before and after a change.",
+              "businessValue": "Makes change validation evidence-based instead of relying only on manual confirmation.",
+              "outputs": "Side-by-side differences, expected changes, unexpected deltas and technical evidence.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-09T07:11:35.536Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-50",
+              "reference": "UC-50",
+              "name": "Golden Template Compliance",
+              "description": "Checks device configuration against approved standard templates and expected configuration patterns.",
+              "businessValue": "Improves standardization and reduces operational risk caused by inconsistent configuration.",
+              "outputs": "Compliance score, missing configuration, invalid values and remediation hints.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-09T07:11:43.284Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-51",
+              "reference": "UC-51",
+              "name": "Policy Compliance Validation",
+              "description": "Runs configurable technical and security policy checks against configuration and operational state.",
+              "businessValue": "Ensures devices follow internal standards before and after operational activities.",
+              "outputs": "Pass/fail checks, evidence per rule, policy violations and exception list.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-09T07:11:49.232Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-54",
+              "reference": "UC-54",
+              "name": "Configuration Drift Detection",
+              "description": "Detects configuration changes that move away from the approved baseline or happen outside authorized activities.",
+              "businessValue": "Finds uncontrolled changes early and supports compliance governance.",
+              "outputs": "Drift report, changed commands, timestamp/source, affected devices and severity.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-09T07:11:59.253Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 1
+        },
+        {
+          "id": "cat-f74eb3bb-1ca0-440e-a9d5-3576fac5c50b",
+          "name": "CoreAssets (Inventory)",
+          "description": "",
+          "useCases": [
+            {
+              "id": "uc-95",
+              "reference": "UC-95",
+              "name": "Network Digital Twin",
+              "description": "Maintains a synchronized digital representation of assets, topology, configuration, services, capacity and dependencies.",
+              "businessValue": "Provides a reliable simulation and analysis foundation for operations, planning and automation.",
+              "outputs": "Digital network model, current state, dependencies, scenarios and change impact.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-09T07:15:27.676Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-96",
+              "reference": "UC-96",
+              "name": "Network Knowledge Graph",
+              "description": "Connects assets, services, customers, alarms, tickets, changes and events as a relationship graph.",
+              "businessValue": "Improves search, correlation, AI reasoning and contextual analytics.",
+              "outputs": "Graph model, relationship paths, connected entities and contextual insights.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-09T07:15:41.412Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "order": 3
+        },
+        {
+          "id": "dom-core-inventory-topology-topology",
+          "name": "Network Topology",
+          "useCases": [
+            {
+              "id": "uc-31",
+              "reference": "UC-31",
+              "name": "Logical Network Topology",
+              "description": "Builds logical relationships such as interfaces, IP links, VLANs, VRFs, circuits, VPNs and services.",
+              "businessValue": "Connects services to the resources that actually carry them and enables service-level analysis.",
+              "outputs": "Logical topology, service paths, interface relationships, VLAN/VRF mapping and circuit dependency views.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 4
+        }
+      ],
+      "order": 3
+    },
+    {
+      "id": "dom-analytics-dashboards",
+      "name": "Analytics & Dashboards",
+      "description": "Portfolio domain for analytics & dashboards.",
+      "categories": [
+        {
+          "id": "dom-analytics-dashboards-unified-dashboards",
+          "name": "Unified Dashboards",
+          "useCases": [
+            {
+              "id": "uc-99",
+              "reference": "UC-99",
+              "name": "Event & Activity Unified Operations Dashboard",
+              "description": "Builds one contextual dashboard for a specific event, major activity, war room or executive monitoring need by collecting data from multiple domains.",
+              "businessValue": "Demonstrates how the portfolio works as one connected intelligence layer rather than separate tools.",
+              "outputs": "Event dashboard, health view, topology impact, customer/business impact, capacity, tickets, actions and executive summary.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "order": 1
+        },
+        {
+          "id": "dom-integration-reporting-reporting-analytics",
+          "name": "Reporting & Analytics",
+          "useCases": [
+            {
+              "id": "uc-94",
+              "reference": "UC-94",
+              "name": "Network Reports & Operational Analytics",
+              "description": "Provides standard and ad-hoc reporting across inventory, topology, assurance, capacity, faults and operations.",
+              "businessValue": "Turns portfolio data into consumable insights for teams and management.",
+              "outputs": "Reports, dashboards, KPIs, trends, exports and drill-down analytics.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "description": "",
+          "order": 2
+        }
+      ],
+      "order": 9
+    },
+    {
+      "id": "dom-service-inventory-activation",
+      "name": "Service Inventory & Activation",
+      "description": "Portfolio domain for service inventory & activation.",
+      "categories": [
+        {
+          "id": "dom-service-inventory-activation-mpls-services",
+          "name": "MPLS Services",
+          "useCases": [
+            {
+              "id": "uc-57",
+              "reference": "UC-57",
+              "name": "MPLS Network Discovery & Analysis",
+              "description": "Discovers and analyzes MPLS nodes, interfaces, VRFs, VPNs, routing relationships and logical connectivity.",
+              "businessValue": "Provides a clear operational model for complex MPLS environments.",
+              "outputs": "PE/P inventory, VRFs, logical links, service relationships and analysis views.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-58",
+              "reference": "UC-58",
+              "name": "MPLS VPN & Service Topology",
+              "description": "Builds topology for L2/L3 VPN services across participating nodes, VRFs, interfaces and paths.",
+              "businessValue": "Allows teams to understand how VPN services are delivered and where impact may occur.",
+              "outputs": "VPN topology, PE endpoints, VRF mapping, service path and customer relation.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-59",
+              "reference": "UC-59",
+              "name": "MPLS Service Trace",
+              "description": "Traces an MPLS service from endpoint to endpoint across logical and supporting physical resources.",
+              "businessValue": "Improves troubleshooting and impact understanding for service-specific issues.",
+              "outputs": "Service trace, node/path sequence, interfaces, dependencies and failure exposure.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "order": 1
+        },
+        {
+          "id": "dom-service-inventory-activation-service-circuit-inventory",
+          "name": "Service & Circuit Inventory",
+          "useCases": [
+            {
+              "id": "uc-60",
+              "reference": "UC-60",
+              "name": "Service Inventory Management",
+              "description": "Maintains services and their relationship to circuits, customers, logical resources and physical infrastructure.",
+              "businessValue": "Creates the foundation for activation, impact, assurance and customer views.",
+              "outputs": "Service catalogue, service-resource mapping, lifecycle status and dependency tree.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-61",
+              "reference": "UC-61",
+              "name": "Service-to-Resource Traceability",
+              "description": "Traces each service through its supporting circuits, interfaces, ports, cards, nodes and physical path.",
+              "businessValue": "Provides end-to-end transparency from customer service to network resources.",
+              "outputs": "Trace path, supporting objects, impacted resources and navigation links.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-62",
+              "reference": "UC-62",
+              "name": "Automated Circuit & Service Discovery",
+              "description": "Derives circuits and services from configuration, topology and inventory relationships.",
+              "businessValue": "Finds services that exist in the network even when inventory records are incomplete.",
+              "outputs": "Discovered circuits/services, endpoints, path, confidence score and mismatch list.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-63",
+              "reference": "UC-63",
+              "name": "Circuit & Connection Lifecycle Management",
+              "description": "Manages circuit and connection creation, modification, migration, reroute and dismantling.",
+              "businessValue": "Controls the service/resource lifecycle and keeps relationships current.",
+              "outputs": "Circuit profile, endpoints, path, status, changes and associated service/customer.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-64",
+              "reference": "UC-64",
+              "name": "End-to-End Circuit Path Visualization",
+              "description": "Shows the complete circuit/service path across nodes, ports, links and technology layers.",
+              "businessValue": "Makes complex paths explainable for operations, assurance and customer support.",
+              "outputs": "Graphical path, endpoints, intermediate resources, dependencies and impact markers.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "order": 2
+        },
+        {
+          "id": "dom-service-inventory-activation-activation-validation",
+          "name": "Activation & Validation",
+          "useCases": [
+            {
+              "id": "uc-65",
+              "reference": "UC-65",
+              "name": "Service Activation & Provisioning",
+              "description": "Translates approved service requests into resource allocation and network provisioning steps.",
+              "businessValue": "Connects fulfillment with inventory and validation to reduce activation errors.",
+              "outputs": "Provisioning workflow, resource assignments, configuration steps and activation status.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-66",
+              "reference": "UC-66",
+              "name": "Activation Feasibility & Resource Validation",
+              "description": "Checks whether required resources, paths, capacity, ports and addressing are available before activation.",
+              "businessValue": "Prevents failed activation caused by missing or unsuitable resources.",
+              "outputs": "Feasibility result, blockers, available options, capacity check and reservation status.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-67",
+              "reference": "UC-67",
+              "name": "Post-Activation Service Validation",
+              "description": "Validates that a newly activated service matches the design and is operational.",
+              "businessValue": "Confirms fulfillment quality before service handover.",
+              "outputs": "Validation checks, connectivity state, configuration match and acceptance result.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "order": 3
+        }
+      ],
+      "order": 10
+    },
+    {
+      "id": "dom-capacity-management",
+      "name": "Capacity Management",
+      "description": "Portfolio domain for capacity management.",
+      "categories": [
+        {
+          "id": "dom-capacity-management-capacity-inventory",
+          "name": "Capacity Inventory",
+          "useCases": [
+            {
+              "id": "uc-75",
+              "reference": "UC-75",
+              "name": "Network Capacity Inventory",
+              "description": "Maintains installed, available, allocated, reserved and consumed capacity across network resources.",
+              "businessValue": "Provides the baseline needed for utilization, feasibility and expansion decisions.",
+              "outputs": "Capacity catalogue, resource headroom, allocated/reserved capacity and capacity ownership.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-76",
+              "reference": "UC-76",
+              "name": "Port & Interface Capacity Management",
+              "description": "Tracks port and interface availability, speed, utilization, reservation and allocation.",
+              "businessValue": "Helps teams find usable resources and avoid exhausting critical ports.",
+              "outputs": "Port availability, utilization, reservation status, threshold breaches and expansion candidates.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-77",
+              "reference": "UC-77",
+              "name": "Link & Transmission Capacity Management",
+              "description": "Manages bandwidth and utilization across physical and transport links.",
+              "businessValue": "Highlights link congestion, weak transport areas and future augmentation needs.",
+              "outputs": "Link capacity, utilization, headroom, congestion status and trend.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-78",
+              "reference": "UC-78",
+              "name": "MPLS Capacity Management",
+              "description": "Analyzes capacity across MPLS links, P/PE nodes, interfaces and service paths.",
+              "businessValue": "Connects service growth and network backbone load to clear planning actions.",
+              "outputs": "MPLS utilization, hot links, path headroom, service load and exhaustion forecast.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-79",
+              "reference": "UC-79",
+              "name": "Service & Circuit Capacity Management",
+              "description": "Correlates service/circuit demand with underlying resource capacity.",
+              "businessValue": "Shows which services consume critical capacity and where growth creates risk.",
+              "outputs": "Service capacity view, consumed bandwidth, path headroom and impacted customers.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-89",
+              "reference": "UC-89",
+              "name": "Capacity vs. Inventory Validation",
+              "description": "Compares discovered/configured capacity with declared inventory capacity.",
+              "businessValue": "Ensures planning decisions are based on real capacity, not stale records.",
+              "outputs": "Capacity mismatches, missing speed/bandwidth attributes, source conflict and correction queue.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "order": 1
+        },
+        {
+          "id": "dom-capacity-management-monitoring-forecasting",
+          "name": "Monitoring & Forecasting",
+          "useCases": [
+            {
+              "id": "uc-80",
+              "reference": "UC-80",
+              "name": "Capacity Utilization Monitoring",
+              "description": "Continuously tracks utilization against thresholds and baselines.",
+              "businessValue": "Detects resources approaching congestion before customer impact appears.",
+              "outputs": "Utilization status, threshold alerts, trend profile and exception list.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-81",
+              "reference": "UC-81",
+              "name": "Capacity Trend & Forecasting",
+              "description": "Uses historical utilization to forecast when resources will reach defined thresholds.",
+              "businessValue": "Provides early planning signals before capacity becomes urgent.",
+              "outputs": "Forecast date, trend line, confidence, threshold crossing and recommended timing.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-82",
+              "reference": "UC-82",
+              "name": "Capacity Exhaustion Prediction",
+              "description": "Predicts when resources may run out of usable capacity.",
+              "businessValue": "Allows proactive expansion or rerouting before service delivery is constrained.",
+              "outputs": "Exhaustion date, risk level, affected resources, expected demand and priority.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-84",
+              "reference": "UC-84",
+              "name": "Capacity Hotspot Detection",
+              "description": "Identifies capacity pressure points and congested clusters across geography, topology and services.",
+              "businessValue": "Shows where localized capacity issues may become wider operational problems.",
+              "outputs": "Hotspot map, affected resources, trend severity and suggested actions.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "order": 2
+        },
+        {
+          "id": "dom-capacity-management-planning-optimization",
+          "name": "Planning & Optimization",
+          "useCases": [
+            {
+              "id": "uc-83",
+              "reference": "UC-83",
+              "name": "Capacity Planning & Expansion Recommendations",
+              "description": "Recommends capacity actions based on forecast, business impact, service criticality and topology.",
+              "businessValue": "Prioritizes investment where it prevents the highest risk or unlocks important services.",
+              "outputs": "Expansion candidates, priority score, justification, impacted services and expected benefit.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-85",
+              "reference": "UC-85",
+              "name": "Capacity What-If Analysis",
+              "description": "Simulates failure, removal, migration or traffic growth and calculates expected impact before it happens.",
+              "businessValue": "Supports safer planning and more informed change or expansion decisions.",
+              "outputs": "Simulated impact, affected services/customers, capacity after event and risk notes.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-86",
+              "reference": "UC-86",
+              "name": "Capacity Impact After Failure",
+              "description": "Calculates whether surviving resources can absorb traffic after a link/node/path failure.",
+              "businessValue": "Reveals hidden resiliency risks that are not visible from normal utilization alone.",
+              "outputs": "Post-failure utilization, overloaded survivors, affected services and mitigation options.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-87",
+              "reference": "UC-87",
+              "name": "Capacity Reservation & Allocation",
+              "description": "Tracks reserved versus allocated versus consumed capacity for planned projects and services.",
+              "businessValue": "Prevents overbooking and gives fulfillment teams an accurate view of available headroom.",
+              "outputs": "Reservation register, allocation status, consumed capacity and release/expiry tracking.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            },
+            {
+              "id": "uc-88",
+              "reference": "UC-88",
+              "name": "Stranded & Underutilized Capacity Analysis",
+              "description": "Finds available or expensive capacity that remains underused while other areas are constrained.",
+              "businessValue": "Improves asset utilization and guides optimization before new investment.",
+              "outputs": "Underutilized resources, stranded capacity, nearby demand and optimization candidates.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "order": 3
+        },
+        {
+          "id": "dom-capacity-management-assurance-reporting",
+          "name": "Assurance & Reporting",
+          "useCases": [
+            {
+              "id": "uc-90",
+              "reference": "UC-90",
+              "name": "Capacity Dashboard & Executive View",
+              "description": "Presents executive and operational capacity KPIs in one dashboard.",
+              "businessValue": "Converts detailed capacity analysis into management-ready decisions.",
+              "outputs": "Headroom KPIs, hotspots, forecasts, exhaustion risks and expansion priorities.",
+              "status": "Not Assessed",
+              "notes": "",
+              "updatedAt": "2026-09-07T00:00:00.000Z",
+              "integrationIds": [],
+              "developerIds": [],
+              "gapIds": []
+            }
+          ],
+          "order": 4
+        }
+      ],
+      "order": 11
+    }
+  ],
+  "integrations": [
+    {
+      "id": "int-8feed855-cb30-4fa7-915e-3b728227a20b",
+      "name": "CMS (Change Management)",
+      "system": "CMS",
+      "type": "Database",
+      "direction": "Inbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    },
+    {
+      "id": "int-938f1b9a-5ded-41c2-8b23-b3c68351ca6e",
+      "name": "FTTH - NMS (Huawei)",
+      "system": "NMS (Huawei)",
+      "type": "File",
+      "direction": "Inbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    },
+    {
+      "id": "int-9d17fb90-29ac-4c5f-9b84-62d61f6386a0",
+      "name": "FTTH - NMS (Nokia)",
+      "system": "NMS (Nokia)",
+      "type": "File",
+      "direction": "Inbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    },
+    {
+      "id": "int-7245a4fa-87ad-4ffc-9201-a324c4efc700",
+      "name": "FTTM - NMS (Nokia)",
+      "system": "NMS (Nokia)",
+      "type": "File",
+      "direction": "Inbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    },
+    {
+      "id": "int-80506f3e-d3ca-4e1e-897f-ad22f8b22849",
+      "name": "RTTS (Proactive Tickets)",
+      "system": "RTTS",
+      "type": "Database",
+      "direction": "Inbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    },
+    {
+      "id": "int-14b3350d-20e0-4012-a17d-6d7385286078",
+      "name": "Watson (Alarms)",
+      "system": "Watson",
+      "type": "SNMP",
+      "direction": "Inbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    },
+    {
+      "id": "int-5d4f267a-3f5c-40b5-83d3-ca249d96e4aa",
+      "name": "WFMS (Reactive Tickets)",
+      "system": "WFMS",
+      "type": "Database",
+      "direction": "Inbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    },
+    {
+      "id": "int-ef333363-0cec-470b-89f1-90460a26cb35",
+      "name": "Pega (Reactive Tickets)",
+      "system": "Pega",
+      "type": "Database",
+      "direction": "Inbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    },
+    {
+      "id": "int-9af74b0d-1e20-4ac5-8492-1c19b0463adc",
+      "name": "AAA (ALEPO)",
+      "system": "ALEPO",
+      "type": "Database",
+      "direction": "Inbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    },
+    {
+      "id": "int-0412b427-e2f6-4714-8db2-0bc5fbe933ac",
+      "name": "NAF (Network Analyzer)",
+      "system": "NAF",
+      "type": "API",
+      "direction": "Outbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    },
+    {
+      "id": "int-ce4f24be-5ba3-4c1d-8fc5-7f49bf60eb99",
+      "name": "Single Store (Granite Data)",
+      "system": "Single Store",
+      "type": "Database",
+      "direction": "Inbound",
+      "status": "Available",
+      "owner": "",
+      "description": "",
+      "dataObjects": "",
+      "frequency": ""
+    }
+  ],
+  "developers": [
+    {
+      "id": "dev-a8108ccc-555e-4357-bb9d-934c7e65b826",
+      "name": "Walid Gamal",
+      "role": "Full Stack Developer",
+      "email": "wgamal@selecteg.com"
+    },
+    {
+      "id": "dev-521eafb2-53d1-4456-8603-cc52a20e59a7",
+      "name": "Haitham Aglan",
+      "role": "DB Developer",
+      "email": "haglan@selecteg.com"
+    },
+    {
+      "id": "dev-f25538fc-0ff1-421f-ac3b-4b9057e41655",
+      "name": "Oraby Mahmoud",
+      "role": "DB Developer",
+      "email": "omahmoud@selecteg.com"
+    },
+    {
+      "id": "dev-f151e07d-18f5-4030-b800-abb2bdab520f",
+      "name": "Hend Mohamed",
+      "role": "Full Stack Developer",
+      "email": "hmohamed@selecteg.com"
+    },
+    {
+      "id": "dev-6a575c5f-c446-4fbe-a9d8-88a07a4002d8",
+      "name": "Krolos Fawzy",
+      "role": "Full Stack Devleoper",
+      "email": "kfawzy@selecteg.com"
+    },
+    {
+      "id": "dev-8987e933-b148-4435-8fcc-6adc3f5b183c",
+      "name": "Mustafa Maher",
+      "role": "DB Developer",
+      "email": "mmaher@selecteg.com"
+    }
+  ],
+  "gapClassifications": [
+    {
+      "id": "gclass-integration",
+      "name": "Integration",
+      "description": "Missing, incomplete or blocked system integration."
+    },
+    {
+      "id": "gclass-data",
+      "name": "Data",
+      "description": "Data availability, quality, mapping or completeness gap."
+    },
+    {
+      "id": "gclass-functional",
+      "name": "Functional",
+      "description": "Missing or incomplete business functionality."
+    },
+    {
+      "id": "gclass-technical",
+      "name": "Technical",
+      "description": "Architecture, platform or implementation gap."
+    },
+    {
+      "id": "gclass-process",
+      "name": "Process",
+      "description": "Workflow, governance or operational process gap."
+    },
+    {
+      "id": "gclass-security",
+      "name": "Security",
+      "description": "Security, access or compliance gap."
+    },
+    {
+      "id": "gclass-performance",
+      "name": "Performance",
+      "description": "Performance, scalability or capacity gap."
+    },
+    {
+      "id": "gclass-other",
+      "name": "Other",
+      "description": "Gap not covered by another classification."
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-9d45dee9-648c-4516-bb1f-589ec093c913",
+      "title": "NMS Optimization",
+      "description": "- Implement file verification to stop loading in case of empty/partial files received\n- Load delta instead of flushing data from table and reload it\n- Implement failover scenario to switch to back up in case of main is not reachable",
+      "classificationId": "gclass-integration",
+      "status": "Open",
+      "priority": "Medium",
+      "ownerIds": [],
+      "dueDate": "",
+      "dependency": "",
+      "resolution": ""
+    },
+    {
+      "id": "gap-11916a2b-02c8-4911-a793-0aab889cfadb",
+      "title": "NAF Failover Mechanism",
+      "description": "Need to have Mechanism to manage if NAF server changed/down/unreachable it should be move to the backup server",
+      "classificationId": "gclass-integration",
+      "status": "Open",
+      "priority": "Medium",
+      "ownerIds": [],
+      "dueDate": "",
+      "dependency": "",
+      "resolution": ""
+    },
+    {
+      "id": "gap-d5581193-a5f8-4b8e-97ae-5cf3ce4d7934",
+      "title": "Move to new Data Source ",
+      "description": "Move to new Data Source to use it instead of the old one (WFMS to be Pega Mega table)",
+      "classificationId": "gclass-data",
+      "status": "Open",
+      "priority": "Medium",
+      "ownerIds": [],
+      "dueDate": "",
+      "dependency": "",
+      "resolution": ""
+    },
+    {
+      "id": "gap-3eaefc38-9111-40e7-a307-272eeadb18e8",
+      "title": "Remove Old Data Source ",
+      "description": "Remove Old Data Source and do cleansing for unused pipelines",
+      "classificationId": "",
+      "status": "Open",
+      "priority": "Low",
+      "ownerIds": [],
+      "dueDate": "",
+      "dependency": "",
+      "resolution": ""
+    }
+  ],
+  "nars": [],
+  "pipelines": []
+}

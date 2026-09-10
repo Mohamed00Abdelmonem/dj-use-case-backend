@@ -5,19 +5,22 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.db import transaction
 from django.utils import timezone
 
-from .models import Domain, Category, UseCase
-from .serializers import DomainSerializer, CategorySerializer, UseCaseSerializer
+from .models import Domain, Category, UseCase, Pipeline
+from .serializers import DomainSerializer, CategorySerializer, UseCaseSerializer, PipelineSerializer
 from apps.people.models import Developer
 from apps.people.serializers import DeveloperSerializer
 from apps.gaps.models import GapClassification, Gap
 from apps.gaps.serializers import GapClassificationSerializer, GapSerializer
-from apps.integrations.models import Integration
-from apps.integrations.serializers import IntegrationSerializer
+from apps.integrations.models import Integration, NAR
+from apps.integrations.serializers import IntegrationSerializer, NarSerializer
 
 DEFAULT_USE_CASE_STATUSES = ["Not Assessed", "In Assessment", "Gaps Identified", "Ready", "Implemented"]
 DEFAULT_GAP_STATUSES = ["Open", "In Analysis", "Planned", "In Progress", "Blocked", "Closed"]
 DEFAULT_PRIORITIES = ["Low", "Medium", "High", "Critical"]
 DEFAULT_INTEGRATION_STATUSES = ["Not Started", "Planned", "In Progress", "Available", "Blocked"]
+DEFAULT_PIPELINE_STATUSES = ["Planned", "In Development", "Active", "Paused", "Failed", "Retired"]
+DEFAULT_PIPELINE_ENVIRONMENTS = ["Development", "Test", "UAT", "Production"]
+DEFAULT_NAR_STATUSES = ["Draft", "Submitted", "Approved", "Rejected", "Revoked"]
 
 class DomainViewSet(viewsets.ModelViewSet):
     queryset = Domain.objects.all().prefetch_related('categories__use_cases')
@@ -65,6 +68,15 @@ class UseCaseViewSet(viewsets.ModelViewSet):
     ordering_fields = ['reference', 'name', 'status', 'updated_at']
 
 
+class PipelineViewSet(viewsets.ModelViewSet):
+    queryset = Pipeline.objects.all().prefetch_related('integration_ids', 'use_case_ids', 'owner_ids')
+    serializer_class = PipelineSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['status', 'environment', 'type']
+    search_fields = ['name', 'uuid', 'server', 'description', 'notes']
+    ordering_fields = ['name', 'status', 'created_at']
+
+
 class PortfolioView(APIView):
     def get(self, request):
         domains = Domain.objects.all().prefetch_related(
@@ -76,11 +88,13 @@ class PortfolioView(APIView):
         developers = Developer.objects.all()
         gap_classifications = GapClassification.objects.all()
         gaps = Gap.objects.all().prefetch_related('owner_ids')
+        nars = NAR.objects.all().prefetch_related('integration_ids', 'owner_ids')
+        pipelines = Pipeline.objects.all().prefetch_related('integration_ids', 'use_case_ids', 'owner_ids')
 
         return Response({
             "meta": {
                 "app": "Use Case Hub",
-                "version": "2.3",
+                "version": "2.5",
                 "updatedAt": timezone.now().isoformat()
             },
             "settings": {
@@ -88,13 +102,19 @@ class PortfolioView(APIView):
                 "gapStatuses": DEFAULT_GAP_STATUSES,
                 "priorities": DEFAULT_PRIORITIES,
                 "integrationStatuses": DEFAULT_INTEGRATION_STATUSES,
-                "catalogueWidth": 310
+                "catalogueWidth": 310,
+                "pipelineStatuses": DEFAULT_PIPELINE_STATUSES,
+                "pipelineEnvironments": DEFAULT_PIPELINE_ENVIRONMENTS,
+                "narStatuses": DEFAULT_NAR_STATUSES,
+                "narRenewalWarningDays": 30
             },
             "domains": DomainSerializer(domains, many=True).data,
             "integrations": IntegrationSerializer(integrations, many=True).data,
             "developers": DeveloperSerializer(developers, many=True).data,
             "gapClassifications": GapClassificationSerializer(gap_classifications, many=True).data,
-            "gaps": GapSerializer(gaps, many=True).data
+            "gaps": GapSerializer(gaps, many=True).data,
+            "nars": NarSerializer(nars, many=True).data,
+            "pipelines": PipelineSerializer(pipelines, many=True).data
         })
 
 
@@ -105,6 +125,8 @@ class PortfolioImportView(APIView):
         if not isinstance(data, dict):
             return Response({"error": "Invalid payload format. Expected JSON object."}, status=status.HTTP_400_BAD_REQUEST)
 
+        Pipeline.objects.all().delete()
+        NAR.objects.all().delete()
         UseCase.objects.all().delete()
         Category.objects.all().delete()
         Domain.objects.all().delete()
@@ -171,6 +193,7 @@ class PortfolioImportView(APIView):
                     gap.owner_ids.add(dev_map[o_id])
             gap_map[gap.id] = gap
 
+        uc_map = {}
         for dom_data in data.get('domains', []):
             domain = Domain.objects.create(
                 id=dom_data.get('id'),
@@ -198,6 +221,7 @@ class PortfolioImportView(APIView):
                         status=uc_data.get('status', 'Not Assessed'),
                         notes=uc_data.get('notes', '')
                     )
+                    uc_map[uc.id] = uc
                     for d_id in uc_data.get('developerIds', []):
                         if d_id in dev_map:
                             uc.developer_ids.add(dev_map[d_id])
@@ -207,5 +231,54 @@ class PortfolioImportView(APIView):
                     for g_id in uc_data.get('gapIds', []):
                         if g_id in gap_map:
                             uc.gap_ids.add(gap_map[g_id])
+
+        for nar_data in data.get('nars', []):
+            nar = NAR.objects.create(
+                id=nar_data.get('id'),
+                number=nar_data.get('number', ''),
+                status=nar_data.get('status', 'Draft'),
+                request_date=nar_data.get('requestDate', ''),
+                end_date=nar_data.get('endDate', ''),
+                warning_days=nar_data.get('warningDays', 30),
+                mail_subject=nar_data.get('mailSubject', ''),
+                requester=nar_data.get('requester', ''),
+                approval_reference=nar_data.get('approvalReference', ''),
+                access_scope=nar_data.get('accessScope', ''),
+                notes=nar_data.get('notes', '')
+            )
+            for i_id in nar_data.get('integrationIds', []):
+                if i_id in int_map:
+                    nar.integration_ids.add(int_map[i_id])
+            for o_id in nar_data.get('ownerIds', []):
+                if o_id in dev_map:
+                    nar.owner_ids.add(dev_map[o_id])
+
+        for pipe_data in data.get('pipelines', []):
+            pipeline = Pipeline.objects.create(
+                id=pipe_data.get('id'),
+                name=pipe_data.get('name', ''),
+                uuid=pipe_data.get('uuid', ''),
+                type=pipe_data.get('type', 'Batch'),
+                status=pipe_data.get('status', 'Planned'),
+                server=pipe_data.get('server', ''),
+                server_url=pipe_data.get('serverUrl', ''),
+                environment=pipe_data.get('environment', 'Development'),
+                schedule=pipe_data.get('schedule', ''),
+                timezone=pipe_data.get('timezone', 'UTC'),
+                repository_url=pipe_data.get('repositoryUrl', ''),
+                pipeline_path=pipe_data.get('pipelinePath', ''),
+                blocks=pipe_data.get('blocks', []),
+                description=pipe_data.get('description', ''),
+                notes=pipe_data.get('notes', '')
+            )
+            for i_id in pipe_data.get('integrationIds', []):
+                if i_id in int_map:
+                    pipeline.integration_ids.add(int_map[i_id])
+            for uc_id in pipe_data.get('useCaseIds', []):
+                if uc_id in uc_map:
+                    pipeline.use_case_ids.add(uc_map[uc_id])
+            for o_id in pipe_data.get('ownerIds', []):
+                if o_id in dev_map:
+                    pipeline.owner_ids.add(dev_map[o_id])
 
         return PortfolioView().get(request)

@@ -9,7 +9,7 @@ def generate_gap_id():
     return f"gap-{uuid.uuid4()}"
 
 class GapClassification(models.Model):
-    id = models.CharField(max_length=64, primary_key=True, default=generate_gclass_id)
+    id = models.CharField(max_length=255, primary_key=True, default=generate_gclass_id)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, default='')
 
@@ -26,16 +26,16 @@ class GapClassification(models.Model):
 
 
 class Gap(models.Model):
-    id = models.CharField(max_length=64, primary_key=True, default=generate_gap_id)
+    id = models.CharField(max_length=255, primary_key=True, default=generate_gap_id)
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, default='')
     classification = models.ForeignKey(
         GapClassification, on_delete=models.SET_NULL, null=True, blank=True, related_name='gaps'
     )
-    status = models.CharField(max_length=64, default='Open')
-    priority = models.CharField(max_length=64, default='Medium')
+    status = models.CharField(max_length=255, default='Open')
+    priority = models.CharField(max_length=255, default='Medium')
     owner_ids = models.ManyToManyField(Developer, blank=True, related_name='gaps')
-    due_date = models.CharField(max_length=64, blank=True, default='')
+    due_date = models.CharField(max_length=255, blank=True, default='')
     dependency = models.TextField(blank=True, default='')
     resolution = models.TextField(blank=True, default='')
 

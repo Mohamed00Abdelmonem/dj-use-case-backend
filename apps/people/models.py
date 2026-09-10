@@ -5,7 +5,7 @@ def generate_dev_id():
     return f"dev-{uuid.uuid4()}"
 
 class Developer(models.Model):
-    id = models.CharField(max_length=64, primary_key=True, default=generate_dev_id)
+    id = models.CharField(max_length=255, primary_key=True, default=generate_dev_id)
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=255, blank=True, default='')
     email = models.CharField(max_length=255, blank=True, default='')

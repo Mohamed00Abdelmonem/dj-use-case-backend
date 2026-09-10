@@ -1,7 +1,6 @@
 services:
   db:
     image: postgres:15-alpine
-    container_name: use_case_hub_db
     restart: always
     environment:
       POSTGRES_DB: ${DB_NAME:-use_case_hub}
@@ -21,7 +20,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: use_case_hub_backend
     restart: always
     ports:
       - "8000:8000"
