@@ -18,7 +18,8 @@ DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 if not SECRET_KEY:
-    if DEBUG:
+    is_testing = 'pytest' in sys.modules or any('test' in arg for arg in sys.argv)
+    if DEBUG or is_testing or os.getenv('ENVIRONMENT', 'development') != 'production':
         SECRET_KEY = 'django-insecure-dev-secret-key-use-case-hub-123456'
     else:
         raise ValueError("SECRET_KEY environment variable must be set in production mode.")
