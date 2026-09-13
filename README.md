@@ -58,7 +58,7 @@ source venv/bin/activate
 ### 2. Install Dependencies
 
 ```bash
-pip install Django djangorestframework django-cors-headers django-filter pytest pytest-django
+pip install -r requirements.txt
 ```
 
 ### 3. Database Migrations
@@ -139,3 +139,113 @@ Set `.env` in the frontend root:
 VITE_API_BASE_URL=http://localhost:8000/api
 VITE_USE_MOCK_DATA=false
 ```
+
+---
+
+## 🐳 Production Deployment Guide (Docker & Docker Compose)
+
+This backend is packaged with Gunicorn, PostgreSQL, and Docker Compose for production deployment on Ubuntu 24.04 (or any Docker-capable server).
+
+### 1. Environment Setup
+
+Copy `.env.example` to create your production environment configuration:
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` to configure production secrets:
+
+```env
+SECRET_KEY=your-secure-randomly-generated-secret-key
+DEBUG=False
+ALLOWED_HOSTS=api.yourdomain.com,your-server-ip,localhost
+
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=use_case_hub
+DB_USER=postgres
+DB_PASSWORD=your-strong-db-password
+DB_HOST=db
+DB_PORT=5432
+
+CORS_ALLOWED_ORIGINS=https://yourdomain.com,http://localhost:3000
+CSRF_TRUSTED_ORIGINS=https://yourdomain.com
+```
+
+### 2. Build and Launch Containers
+
+Build and start the PostgreSQL and Django backend containers in detached mode:
+
+```bash
+docker compose up -d --build
+```
+
+The container entrypoint script will automatically:
+1. Wait for PostgreSQL to become ready.
+2. Execute all pending database migrations (`python manage.py migrate --noinput`).
+3. Collect static files into `STATIC_ROOT` (`python manage.py collectstatic --noinput`).
+4. Launch Gunicorn WSGI server on port `8000` with 3 worker processes.
+
+### 3. Verification & Log Inspection
+
+Check container status:
+
+```bash
+docker compose ps
+```
+
+View application logs:
+
+```bash
+docker compose logs -f backend
+```
+
+Check database logs:
+
+```bash
+docker compose logs -f db
+```
+
+### 4. Running Administrative Commands in Production
+
+Seed initial data (optional):
+
+```bash
+docker compose exec backend python manage.py seed_data
+```
+
+Create a superuser:
+
+```bash
+docker compose exec backend python manage.py createsuperuser
+```
+
+Run test suite inside container:
+
+```bash
+docker compose exec backend python manage.py test
+```
+
+### 5. Stopping and Restarting Services
+
+Restart services:
+
+```bash
+docker compose restart
+```
+
+Stop containers (preserving database volume):
+
+```bash
+docker compose down
+```
+
+### 6. Updating the Application
+
+When pulling new code:
+
+```bash
+git pull origin main
+docker compose up -d --build
+```
+

@@ -16,8 +16,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-COPY requirments.txt /app/
-RUN pip install --no-cache-dir -r requirments.txt
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
 COPY . /app/
@@ -32,5 +32,6 @@ EXPOSE 8000
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
 
-# Default command
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Default command (Gunicorn WSGI server for production)
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "project.wsgi:application"]
+
