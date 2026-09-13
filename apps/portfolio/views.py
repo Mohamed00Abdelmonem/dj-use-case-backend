@@ -1,4 +1,5 @@
 from rest_framework import viewsets, filters, status
+from rest_framework.decorators import action
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
@@ -66,6 +67,17 @@ class UseCaseViewSet(viewsets.ModelViewSet):
     filterset_fields = ['status', 'category', 'category__domain']
     search_fields = ['reference', 'name', 'description', 'notes', 'business_value', 'outputs']
     ordering_fields = ['reference', 'name', 'status', 'updated_at']
+
+    @action(detail=True, methods=['patch', 'post'], url_path='status')
+    def change_status(self, request, pk=None):
+        use_case = self.get_object()
+        new_status = request.data.get('status')
+        if not new_status:
+            return Response({"error": "Field 'status' is required."}, status=status.HTTP_400_BAD_REQUEST)
+        use_case.status = new_status
+        use_case.save()
+        serializer = self.get_serializer(use_case)
+        return Response(serializer.data)
 
 
 class PipelineViewSet(viewsets.ModelViewSet):
