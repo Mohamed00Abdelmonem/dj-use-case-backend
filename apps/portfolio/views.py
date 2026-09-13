@@ -8,12 +8,12 @@ from django.utils import timezone
 
 from .models import Domain, Category, UseCase, Pipeline
 from .serializers import DomainSerializer, CategorySerializer, UseCaseSerializer, PipelineSerializer
-from apps.people.models import Developer
-from apps.people.serializers import DeveloperSerializer
-from apps.gaps.models import GapClassification, Gap
-from apps.gaps.serializers import GapClassificationSerializer, GapSerializer
-from apps.integrations.models import Integration, NAR
-from apps.integrations.serializers import IntegrationSerializer, NarSerializer
+from apps.people.models import Developer  # type: ignore
+from apps.people.serializers import DeveloperSerializer  # type: ignore
+from apps.gaps.models import GapClassification, Gap  # type: ignore
+from apps.gaps.serializers import GapClassificationSerializer, GapSerializer  # type: ignore
+from apps.integrations.models import Integration, NAR  # type: ignore
+from apps.integrations.serializers import IntegrationSerializer, NarSerializer  # type: ignore
 
 DEFAULT_USE_CASE_STATUSES = ["Not Assessed", "In Assessment", "Gaps Identified", "Ready", "Implemented"]
 DEFAULT_GAP_STATUSES = ["Open", "In Analysis", "Planned", "In Progress", "Blocked", "Closed"]
