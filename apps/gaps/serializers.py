@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import GapClassification, Gap
 from apps.people.models import Developer
+from apps.portfolio.models import UseCase
+from apps.core.fields import SafePrimaryKeyRelatedField
 
 class GapClassificationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,15 +11,21 @@ class GapClassificationSerializer(serializers.ModelSerializer):
 
 
 class GapSerializer(serializers.ModelSerializer):
-    classificationId = serializers.PrimaryKeyRelatedField(
+    classificationId = SafePrimaryKeyRelatedField(
         source='classification',
         queryset=GapClassification.objects.all(),
         required=False,
         allow_null=True
     )
-    ownerIds = serializers.PrimaryKeyRelatedField(
+    ownerIds = SafePrimaryKeyRelatedField(
         source='owner_ids',
         queryset=Developer.objects.all(),
+        many=True,
+        required=False
+    )
+    useCaseIds = SafePrimaryKeyRelatedField(
+        source='use_cases',
+        queryset=UseCase.objects.all(),
         many=True,
         required=False
     )
@@ -27,7 +35,7 @@ class GapSerializer(serializers.ModelSerializer):
         model = Gap
         fields = [
             'id', 'title', 'description', 'classificationId',
-            'status', 'priority', 'ownerIds', 'dueDate',
+            'status', 'priority', 'ownerIds', 'useCaseIds', 'dueDate',
             'dependency', 'resolution'
         ]
 

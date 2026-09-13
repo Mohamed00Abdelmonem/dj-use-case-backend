@@ -62,3 +62,24 @@ class APIEndpointsTestCase(TestCase):
     def test_domain_delete_protected_when_has_categories(self):
         res = self.client.delete(f'/api/domains/{self.domain.id}/')
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_change_use_case_status_endpoint(self):
+        res = self.client.patch(f'/api/use-cases/{self.use_case.id}/status/', {"status": "Ready"}, format='json')
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(res.data["status"], "Ready")
+        self.use_case.refresh_from_db()
+        self.assertEqual(self.use_case.status, "Ready")
+
+    def test_gap_patch_with_empty_classification_and_stale_pks(self):
+        res = self.client.patch(f'/api/gaps/{self.gap.id}/', {
+            "title": "Updated Gap Title",
+            "classificationId": "",
+            "useCaseIds": [self.use_case.id, "non-existent-uc-id"],
+            "ownerIds": ["non-existent-dev-id"]
+        }, format='json')
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(res.data["title"], "Updated Gap Title")
+        self.assertEqual(res.data["classificationId"], "")
+        self.assertEqual(res.data["useCaseIds"], [self.use_case.id])
+
+

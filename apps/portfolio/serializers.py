@@ -1,30 +1,32 @@
 from rest_framework import serializers
-from .models import Domain, Category, UseCase
+from .models import Domain, Category, UseCase, Pipeline
 from apps.people.models import Developer
 from apps.gaps.models import Gap
 from apps.integrations.models import Integration
+from apps.core.fields import SafePrimaryKeyRelatedField
 
 class UseCaseSerializer(serializers.ModelSerializer):
-    categoryId = serializers.PrimaryKeyRelatedField(
+    categoryId = SafePrimaryKeyRelatedField(
         source='category',
         queryset=Category.objects.all(),
-        required=False
+        required=False,
+        allow_null=True
     )
-    businessValue = serializers.CharField(source='business_value', required=False, allow_blank=True)
+    businessValue = serializers.CharField(source='business_value', required=False, allow_blank=True, allow_null=True)
     updatedAt = serializers.DateTimeField(source='updated_at', read_only=True)
-    developerIds = serializers.PrimaryKeyRelatedField(
+    developerIds = SafePrimaryKeyRelatedField(
         source='developer_ids',
         queryset=Developer.objects.all(),
         many=True,
         required=False
     )
-    integrationIds = serializers.PrimaryKeyRelatedField(
+    integrationIds = SafePrimaryKeyRelatedField(
         source='integration_ids',
         queryset=Integration.objects.all(),
         many=True,
         required=False
     )
-    gapIds = serializers.PrimaryKeyRelatedField(
+    gapIds = SafePrimaryKeyRelatedField(
         source='gap_ids',
         queryset=Gap.objects.all(),
         many=True,
@@ -41,10 +43,11 @@ class UseCaseSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    domainId = serializers.PrimaryKeyRelatedField(
+    domainId = SafePrimaryKeyRelatedField(
         source='domain',
         queryset=Domain.objects.all(),
-        required=False
+        required=False,
+        allow_null=True
     )
     useCases = UseCaseSerializer(source='use_cases', many=True, read_only=True)
 
@@ -61,27 +64,25 @@ class DomainSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description', 'order', 'categories']
 
 
-from .models import Pipeline
-
 class PipelineSerializer(serializers.ModelSerializer):
-    serverUrl = serializers.CharField(source='server_url', required=False, allow_blank=True)
-    repositoryUrl = serializers.CharField(source='repository_url', required=False, allow_blank=True)
-    pipelinePath = serializers.CharField(source='pipeline_path', required=False, allow_blank=True)
+    serverUrl = serializers.CharField(source='server_url', required=False, allow_blank=True, allow_null=True)
+    repositoryUrl = serializers.CharField(source='repository_url', required=False, allow_blank=True, allow_null=True)
+    pipelinePath = serializers.CharField(source='pipeline_path', required=False, allow_blank=True, allow_null=True)
     createdAt = serializers.DateTimeField(source='created_at', read_only=True)
     updatedAt = serializers.DateTimeField(source='updated_at', read_only=True)
-    integrationIds = serializers.PrimaryKeyRelatedField(
+    integrationIds = SafePrimaryKeyRelatedField(
         source='integration_ids',
         queryset=Integration.objects.all(),
         many=True,
         required=False
     )
-    useCaseIds = serializers.PrimaryKeyRelatedField(
+    useCaseIds = SafePrimaryKeyRelatedField(
         source='use_case_ids',
         queryset=UseCase.objects.all(),
         many=True,
         required=False
     )
-    ownerIds = serializers.PrimaryKeyRelatedField(
+    ownerIds = SafePrimaryKeyRelatedField(
         source='owner_ids',
         queryset=Developer.objects.all(),
         many=True,
